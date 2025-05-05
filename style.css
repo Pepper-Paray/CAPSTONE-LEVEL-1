@@ -1,0 +1,14 @@
+header{
+border:25px;
+border-color: black;
+font-style: oblique;
+font-feature-settings: "aalt";
+}
+body{
+background-origin: padding-box;
+background-color: antiquewhite;
+}
+footer{
+border:25px;
+border-color: black;
+}
