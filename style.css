@@ -1,14 +1,23 @@
-header{
-border:25px;
-border-color: black;
-font-style: oblique;
-font-feature-settings: "aalt";
+header {
+    border-style: double;
+    border-color: black;
+    font-style: oblique;
+    border-top: 20px;
+    text-align: center;
 }
-body{
-background-origin: padding-box;
-background-color: antiquewhite;
+
+body {
+    text-align: left;
+    font-style: italic oblique;
+    border-style: double;
+
+
+    background-color: antiquewhite;
 }
-footer{
-border:25px;
-border-color: black;
+
+footer {
+    border-style: double;
+    border-color: black;
+    font-style: italic;
+    border-bottom: 20px;
 }
