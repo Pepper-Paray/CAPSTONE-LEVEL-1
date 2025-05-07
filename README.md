@@ -9,3 +9,5 @@ a way to interact with your webpage.
 4.Bootstrap
 like css you can style your webpage.
 This is my professinal webpage about me.
+This contains cards and countdown as well as other cool things!
+I hope you enjoy my website Please let me know and thank you.
