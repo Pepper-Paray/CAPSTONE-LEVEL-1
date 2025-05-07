@@ -34,3 +34,21 @@ function toggleText() {
         textElement.style.display = "none";
     }
 }
+let issueData = {
+    title: `Comment from ${name}`,
+    body: comment,
+}; 
+
+fetch("https://github.com/issues/assigned", {
+    method: "POST",
+    headers: {
+        "Authorization": "Bearer YOUR_GITHUB_PERSONAL_ACCESS_TOKEN",
+        "Accept": "application/vnd.github.v3+json",
+        "Content-Type": "application/json"
+            },
+            body: JSON.stringify(issueData)
+        })
+        .then(response => response.json())
+        .then(data => alert("Comment posted as GitHub issue!"))
+        .catch(error => alert("Error posting comment to GitHub."));
+    

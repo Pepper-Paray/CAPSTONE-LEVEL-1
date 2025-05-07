@@ -17,7 +17,8 @@
         <h4>When I graduate I will be a full stack developer.</h4>
     </header>
     <div class="card" style="width: 18rem;">
-        <img src="https://th.bing.com/th/id/OIP.7i78fiok59FZcuTXB2ML1AHaE8?rs=1&pid=ImgDetMain" class="card-img-top" alt="profile">
+        <img src="https://th.bing.com/th/id/OIP.7i78fiok59FZcuTXB2ML1AHaE8?rs=1&pid=ImgDetMain" class="card-img-top"
+            alt="profile">
         <div class="card-body">
             <h3 class="card-title">Github</h3>
             <p class="card-text">My github link, check out my work and see what you like.</p>
@@ -56,6 +57,42 @@
     <li>I have learn css</li>
     <li>I have leant javascript</li>
     <li>I have learn bootstrap</li>
+    <input type="text" id="nameBox" placeholder="Enter your name">
+    <br><br>
+    <textarea id="commentBox" placeholder="Write a comment..." rows="4" cols="50"></textarea>
+    <br>
+    <button onclick="submitComment()">Submit</button>
+    <script>
+        function submitComment() {
+            let name = document.getElementById("nameBox").value.trim();
+            let comment = document.getElementById("commentBox").value.trim();
+            if (name === "" || comment.trim() !== "") {
+                alert("Name: " + name + "\nComment: " + comment);
+            } else {
+                alert("Please enter both your name and comment before submitting.");
+            }
+        }
+
+        let commentSection = document.getElementById("commentSection");
+        let commentDiv = document.createElement("div");
+
+        commentDiv.innerHTML = `<strong>${name}:</strong> ${comment} 
+                <button onclick="likeComment(this)">👍 <span>0</span></button>
+                <button onclick="dislikeComment(this)">👎 <span>0</span></button>`;
+
+        commentSection.appendChild(commentDiv);
+
+
+        function likeComment(button) {
+            let count = button.querySelector("span");
+            count.textContent = parseInt(count.textContent) + 1;
+        }
+
+        function dislikeComment(button) {
+            let count = button.querySelector("span");
+            count.textContent = parseInt(count.textContent) + 1;
+        }
+    </script>
     <footer>
         <h5>
             Thank you for your time.
