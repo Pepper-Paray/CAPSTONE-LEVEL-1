@@ -53,43 +53,48 @@
     <button onclick="toggleText()">Toggle Text</button>
     <div id="text">Hello,You are blessed!!!</div>
 
-    <li>I have learn html.</li>
-    <li>I have learn css</li>
-    <li>I have leant javascript</li>
-    <li>I have learn bootstrap</li>
+    <ul>
+        <li>I have learned HTML.</li>
+        <li>I have learned CSS.</li>
+        <li>I have learned JavaScript.</li>
+        <li>I have learned Bootstrap.</li>
+    </ul>
     <input type="text" id="nameBox" placeholder="Enter your name">
     <br><br>
     <textarea id="commentBox" placeholder="Write a comment..." rows="4" cols="50"></textarea>
     <br>
     <button onclick="submitComment()">Submit</button>
+    <div id="commentSection"></div>
     <script>
         function submitComment() {
-            let name = document.getElementById("nameBox").value.trim();
-            let comment = document.getElementById("commentBox").value.trim();
-            if (name === "" || comment.trim() !== "") {
-                alert("Name: " + name + "\nComment: " + comment);
-            } else {
+            const name = document.getElementById("nameBox").value.trim();
+            const comment = document.getElementById("commentBox").value.trim();
+            if (name === "" || comment === "") {
                 alert("Please enter both your name and comment before submitting.");
+                return;
             }
+            alert("Name: " + name + "\nComment: " + comment);
+            addComment(name, comment);
+            document.getElementById("nameBox").value = "";
+            document.getElementById("commentBox").value = "";
         }
 
-        let commentSection = document.getElementById("commentSection");
-        let commentDiv = document.createElement("div");
-
-        commentDiv.innerHTML = `<strong>${name}:</strong> ${comment} 
-                <button onclick="likeComment(this)">👍 <span>0</span></button>
+        function addComment(name, comment) {
+            const commentSection = document.getElementById("commentSection");
+            const commentDiv = document.createElement("div");
+            commentDiv.innerHTML = `<strong>${name}:</strong> ${comment} \
+                <button onclick="likeComment(this)">👍 <span>0</span></button>\
                 <button onclick="dislikeComment(this)">👎 <span>0</span></button>`;
-
-        commentSection.appendChild(commentDiv);
-
+            commentSection.appendChild(commentDiv);
+        }
 
         function likeComment(button) {
-            let count = button.querySelector("span");
+            const count = button.querySelector("span");
             count.textContent = parseInt(count.textContent) + 1;
         }
 
         function dislikeComment(button) {
-            let count = button.querySelector("span");
+            const count = button.querySelector("span");
             count.textContent = parseInt(count.textContent) + 1;
         }
     </script>

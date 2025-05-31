@@ -27,28 +27,34 @@ const targetDate = new Date("Nov. 21, 2025 23:59:59").getTime();
 startCountdown(targetDate);
 
 function toggleText() {
-    let textElement = document.getElementById("text");
-    if (textElement.style.display === "none") {
+    const textElement = document.getElementById("text");
+    if (textElement.style.display === "none" || textElement.style.display === "") {
         textElement.style.display = "block";
     } else {
         textElement.style.display = "none";
     }
 }
-let issueData = {
-    title: `Comment from ${name}`,
-    body: comment,
-}; 
 
-fetch("https://github.com/issues/assigned", {
-    method: "POST",
-    headers: {
-        "Authorization": "Bearer YOUR_GITHUB_PERSONAL_ACCESS_TOKEN",
-        "Accept": "application/vnd.github.v3+json",
-        "Content-Type": "application/json"
-            },
-            body: JSON.stringify(issueData)
+// Posts a comment as a GitHub issue (requires valid name and comment)
+function postCommentToGitHub(name, comment) {
+    const issueData = {
+        title: `Comment from ${name}`,
+        body: comment,
+    };
+
+    fetch("https://api.github.com/repos/OWNER/REPO/issues", {
+        method: "POST",
+        headers: {
+            "Authorization": "Bearer YOUR_GITHUB_PERSONAL_ACCESS_TOKEN",
+            "Accept": "application/vnd.github.v3+json",
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(issueData)
+    })
+        .then(response => {
+            if (!response.ok) throw new Error("GitHub API error");
+            return response.json();
         })
-        .then(response => response.json())
-        .then(data => alert("Comment posted as GitHub issue!"))
-        .catch(error => alert("Error posting comment to GitHub."));
-    
+        .then(() => alert("Comment posted as GitHub issue!"))
+        .catch(() => alert("Error posting comment to GitHub."));
+}
